@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ApplicationServices.Interfaces;
+using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
@@ -14,6 +15,10 @@ namespace WebApi.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet("{id}")]
+        public async Task<OrderDTO> GetByIdAsync(int id){
+            return await _orderService.GetByIdAsync(id);
+        }
         
     }
 }

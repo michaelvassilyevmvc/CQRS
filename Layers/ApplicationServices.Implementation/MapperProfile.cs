@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using ApplicationServices.Interfaces;
+using AutoMapper;
+using Entities;
 
 namespace ApplicationServices.Implementation
 {
@@ -6,7 +8,8 @@ namespace ApplicationServices.Implementation
     {
         public MapperProfile()
         {
-            
+            CreateMap<Order, OrderDTO>();
+            CreateMap<OrderItem, OrderItemDTO>();
         }
     }
 }
