@@ -32,13 +32,20 @@ namespace ApplicationServices.Implementation
             return result;
         }
 
-        public async Task<int> CreateOrderAsync(CreateOrderDto dto)
+        public async Task<int> CreateAsync(ChangeOrderDto dto)
         {
             var order = _mapper.Map<Order>(dto);
             order.UserEmail = _currentUserService.Email;
             _dbContext.Orders.Add(order);
             await _dbContext.SaveChangesAsync();
             return order.Id;
+        }
+
+        public async Task UpdateAsync(int id, ChangeOrderDto dto)
+        {
+            var order = await _dbContext.Orders.Include(x => x.Items).SingleAsync(x => x.Id == id);
+            _mapper.Map(dto, order);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

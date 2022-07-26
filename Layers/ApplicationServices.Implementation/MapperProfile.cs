@@ -10,7 +10,7 @@ namespace ApplicationServices.Implementation
         {
             CreateMap<Order, OrderDto>();
             CreateMap<OrderItem, OrderItemDto>().ReverseMap();
-            CreateMap<CreateOrderDto, Order>();
+            CreateMap<ChangeOrderDto, Order>();
         }
     }
 }

@@ -22,8 +22,15 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<int> CreateAsync([FromBody]CreateOrderDto dto){
-            return await _orderService.CreateOrderAsync(dto);
+        public async Task<int> CreateAsync([FromBody] ChangeOrderDto dto)
+        {
+            return await _orderService.CreateAsync(dto);
+        }
+
+        [HttpPut("{id}")]
+        public async Task UpdateAsync(int id, [FromBody] ChangeOrderDto dto)
+        {
+            await _orderService.UpdateAsync(id, dto);
         }
 
     }
