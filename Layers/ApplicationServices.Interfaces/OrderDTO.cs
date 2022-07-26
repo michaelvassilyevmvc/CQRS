@@ -2,10 +2,9 @@ using System.Collections.Generic;
 
 namespace ApplicationServices.Interfaces
 {
-    public class OrderDTO
+    public class OrderDto : CreateOrderDto
     {
         public int Id { get; set; }
-        public List<OrderItemDTO> Items { get; set; }
 
     }
 }

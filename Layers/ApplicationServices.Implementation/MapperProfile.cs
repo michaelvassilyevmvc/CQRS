@@ -8,8 +8,9 @@ namespace ApplicationServices.Implementation
     {
         public MapperProfile()
         {
-            CreateMap<Order, OrderDTO>();
-            CreateMap<OrderItem, OrderItemDTO>();
+            CreateMap<Order, OrderDto>();
+            CreateMap<OrderItem, OrderItemDto>().ReverseMap();
+            CreateMap<CreateOrderDto, Order>();
         }
     }
 }

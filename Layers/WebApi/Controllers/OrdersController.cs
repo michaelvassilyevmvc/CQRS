@@ -16,9 +16,15 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<OrderDTO> GetByIdAsync(int id){
+        public async Task<OrderDto> GetByIdAsync(int id)
+        {
             return await _orderService.GetByIdAsync(id);
         }
-        
+
+        [HttpPost]
+        public async Task<int> CreateAsync([FromBody]CreateOrderDto dto){
+            return await _orderService.CreateOrderAsync(dto);
+        }
+
     }
 }

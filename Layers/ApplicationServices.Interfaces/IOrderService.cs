@@ -2,8 +2,9 @@
 
 namespace ApplicationServices.Interfaces
 {
-    public interface IOrderService 
+    public interface IOrderService
     {
-        Task<OrderDTO> GetByIdAsync(int id);
+        Task<OrderDto> GetByIdAsync(int id);
+        Task<int> CreateOrderAsync(CreateOrderDto dto);
     }
 }
