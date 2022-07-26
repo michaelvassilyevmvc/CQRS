@@ -11,6 +11,12 @@ using DataAccess.MsSql;
 using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using WebApi.Services;
+using CqrsFramework;
+using UseCases.Order.Queries;
+using UseCases.Order.Queries.GetOrderById;
+using Handlers.UseCases.Order.Dto;
+using Handlers.UseCases.Order.Utils;
+using UseCases.Order.Commands.CreateOrder;
 
 namespace WebApi
 {
@@ -34,10 +40,13 @@ namespace WebApi
 
             services.AddScoped<IOrderService, OrderService>();
 
-            services.AddAutoMapper(typeof(MapperProfile));
+            services.AddAutoMapper(typeof(OrderMapperProfile));
             services.AddDbContext<IDbContext, AppDbContext>(builder =>
                 builder.UseSqlServer(Configuration.GetConnectionString("Database")));
             services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IRequestHandler<GetOrderByIdQuery, OrderDto>, GetOrderByIdQueryHandler>();
+            services.AddScoped<IRequestHandler<CreateOrderCommand, int>, CreateOrderCommandHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

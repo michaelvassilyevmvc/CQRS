@@ -4,4 +4,13 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure.Interfaces\Handlers.Infrastructure.Interfaces.csproj" />
+    <ProjectReference Include="..\CqrsFramework\Handlers.CqrsFramework.csproj" />    
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+  </ItemGroup>
+
 </Project>
